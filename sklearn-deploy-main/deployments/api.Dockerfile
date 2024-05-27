@@ -11,9 +11,9 @@ RUN pip install -r requirements.txt
 COPY ./api /api/
 #COPY ./api .
 #added new layer 05272024
-RUN mkdir /api/model_artifacts
+RUN mkdir /api/model_artifacts1
 #COPY ./model_artifacts /api/model_artifacts
-COPY ./model_artifacts /api/model_artifacts/
+COPY /sklearn-deploy-main/model_artifacts /api/model_artifacts1/
 #COPY ./sklearn-deploy-main/model_artifacts /api/model_artifacts/
 EXPOSE 8000
 
