@@ -13,7 +13,7 @@ COPY ./api .
 #added new layer 05272024
 RUN mkdir /model_artifacts
 #COPY ./model_artifacts /api/model_artifacts
-COPY ./model_artifacts ./model_artifacts
+COPY ./model_artifacts model_artifacts
 EXPOSE 8000
 
 CMD ["python", "/api/main.py"]
