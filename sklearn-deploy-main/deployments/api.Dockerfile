@@ -11,9 +11,9 @@ RUN pip install -r requirements.txt
 #COPY ./api /api/
 COPY ./api .
 #added new layer 05272024
-RUN mkdir model_artifacts
+RUN mkdir model_artifacts1
 #COPY ./model_artifacts /api/model_artifacts
-COPY ./model_artifacts model_artifacts
+COPY ./model_artifacts model_artifacts1
 EXPOSE 8000
 
 CMD ["python", "/api/main.py"]
