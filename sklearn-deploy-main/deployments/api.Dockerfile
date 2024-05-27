@@ -8,10 +8,10 @@ WORKDIR /api
 #COPY requirements.txt /api/
 COPY requirements.txt .
 RUN pip install -r requirements.txt
-#COPY ./api /api/
-COPY ./api .
+COPY ./api /api/
+#COPY ./api .
 #added new layer 05272024
-RUN mkdir model_artifacts1
+RUN mkdir /api/model_artifacts
 #COPY ./model_artifacts /api/model_artifacts
 COPY ./model_artifacts /api/model_artifacts/
 #COPY ./sklearn-deploy-main/model_artifacts /api/model_artifacts/
