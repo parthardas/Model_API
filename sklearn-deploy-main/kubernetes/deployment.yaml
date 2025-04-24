@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sklearn-deployment-backend
+  labels:
+    app: sklearn-deployment-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sklearn-deployment-backend
+  template:
+    metadata:
+      labels:
+        app: sklearn-deployment-backend
+    spec:
+      containers:
+      - name: sklearn-deployment-backend
+        image: parthardas/sklearn-deployment-backend:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: MODEL_PATH
+          valueFrom:
+            configMapKeyRef:
+              name: ml-app-config
+              key: MODEL_PATH
+        - name: MODEL_CLASS
+          valueFrom:
+            configMapKeyRef:
+              name: ml-app-config
+              key: MODEL_CLASS
+		- name: SCALAR_PATH
+          valueFrom:
+            configMapKeyRef:
+              name: ml-app-config
+              key: SCALAR_PATH
+        - name: SCALAR_CLASS
+          valueFrom:
+            configMapKeyRef:
+              name: ml-app-config
+              key: SCALAR_CLASS
+		- name: LABEL_ENCODER_PATH
+          valueFrom:
+            configMapKeyRef:
+              name: ml-app-config
+              key: LABEL_ENCODER_PATH
+        - name: LABEL_ENCODER_CLASS
+          valueFrom:
+            configMapKeyRef:
+              name: ml-app-config
+              key: LABEL_ENCODER_CLASS
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        readinessProbe:
+          httpGet:
+            path: /ping
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /ping
+            port: 8000
+          initialDelaySeconds: 15
+          periodSeconds: 20

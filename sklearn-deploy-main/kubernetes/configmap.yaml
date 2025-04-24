@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ml-app-config
+data:
+  MODEL_PATH: "models_artifacts/model.pkl"
+  MODEL_CLASS: "sklearn.neighbors.KNeighborsClassifier"
+  SCALAR_PATH: "models_artifacts/scalar.pkl"
+  SCALAR_PATH: "sklearn.preprocessing.StandardScaler"
+  LABEL_ENCODER_PATH: "models_artifacts/label_encoder.pkl"
+  LABEL_ENCODER_CLASS: "sklearn.preprocessing.LabelEncoder"
