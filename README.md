@@ -33,12 +33,6 @@ A full-stack application that predicts credit scores using machine learning. The
 
 ## Project Structure
 
-Workspace
-(rerun without)
-Collecting workspace information
-
-I'll help you create a comprehensive README.md for your Credit Score Prediction project based on the workspace content:
-
 ├── api/ # FastAPI backend 
 │ ├── main.py # API entry point 
 │ ├── routes/ # API routes 
@@ -73,7 +67,7 @@ The credit score prediction model:
 
 1. Clone the repository
 ```bash
-git clone <repository-url>
+git clone <repository-url>```
 
 2. Start the services using Docker Compose
 
